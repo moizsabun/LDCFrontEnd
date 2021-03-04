@@ -1,41 +1,28 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Components/Header";
-import { Button, Image } from "react-bootstrap";
-
-import ModalPopup from "./Components/ModalPopup";
-
+//import Login from "./Components/login";
+import { CssBaseline } from "@material-ui/core";
+import { useState } from "react";
+import AppContext from "./Components/AppContext";
+import Login from "./Components/login";
+import Masterdata from "./Components/Pages/Masterdata";
+import 'bootstrap/dist/css/bootstrap.css';
+import Signing from "./signing";
+import  "./App.css";
 function App() {
-  console.log(window.location.origin);
-  console.log(`${window.location.origin + "/Images/backgroundImage.jpg"}`);
-
+  let isAuthState = useState(false);
   return (
-    <>
-      <Header></Header>
-<div className="bg">
+<>
 
-      {/* <Image
-        src="/Images/backgroundImage.jpeg"
-        style={{
-          opacity: "0.3",
-          width: "100vw",
-          height: "100vh",
-          position: "fixed",
-        }}
-      ></Image> */}
-   
-      <h1>Hello World</h1>
-      <Button
-        variant="primary"
-        onClick={() => {
-          console.log("clicked Inline Button");
-        }}
-      >
-        Click here
-      </Button>
-      <ModalPopup></ModalPopup>
-      </div>
-    </>
+  {/*<Masterdata></Masterdata> */}
+<div className="App">
+  <AppContext.Provider value={isAuthState}>
+  <Login></Login>
+
+</AppContext.Provider>
+</div>
+
+
+<CssBaseline></CssBaseline>
+</>
   );
 }
 
