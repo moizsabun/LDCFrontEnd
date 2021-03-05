@@ -1,9 +1,12 @@
-import React from 'react'
+import React , {useContext}from 'react'
 import {  Nav,Navbar,NavDropdown,Form , Button} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
 import {Button as MuiButton} from '@material-ui/core';
 import { Link } from "react-router-dom";
+import isAuthContext from  "../AppContext";
 export default function Header() {
+  const isAppAuth = useContext(isAuthContext)
+  console.log(isAppAuth);
     return (
         <Navbar collapseOnSelect bg="dark" variant="dark"  expand="lg"  >
         <Navbar.Brand href="#home">LDC Portal</Navbar.Brand>
@@ -34,7 +37,7 @@ export default function Header() {
           </Nav>
           <Nav className="justify-content-end">
           <Nav.Item>
-          <MuiButton color="inherit" component={Link} to = "/"   onClick ={ ()=> {  localStorage.clear("Token");}
+          <MuiButton style={{color: "white"}} component={Link} to = "/"   onClick ={ ()=> {  localStorage.clear("Token"); isAppAuth[1](false);}
         } >Logout</MuiButton>
           </Nav.Item>
           </Nav>

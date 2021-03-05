@@ -62,12 +62,21 @@ export default function Login() {
       //setLoading('loading');
       setState ({ isLoading:'loading'});
     
-      await VerfiyLogin(username, password);
+      let isSucess = await    VerfiyLogin(username, password);
       
       console.log("Executed this line")
       //setLoading('');
       setState ({isLoading:'no'});
-      isAuth[1](true)
+      if(isSucess)
+      {
+        isAuth[1](true)
+      }
+      else
+      {
+        setState ({...state, isOpen:true});
+        isAuth[1](false)
+      }
+     
      
       
     
@@ -188,12 +197,14 @@ if(isAuth[0])
               </form>
   
             </div>
+           
           </Grid>
+      
         </Paper>
-        <Box mt={8}>
-         <Footer></Footer>
-        </Box>
+        <Footer></Footer>
+        
       </Grid>
+    
     <div className="col-md-4 col-sm-4 col-xs-12"></div>
     </div></div>
     </div>

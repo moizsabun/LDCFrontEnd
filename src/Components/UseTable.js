@@ -9,18 +9,24 @@ const useStyles =  makeStyles( theme => ({
        
          
        '& thead th' : {
-        fontWeight : '600',
-           color : theme.palette.primary.main,
-          backgroundColor : theme.palette.primary.light,
-
+        fontWeight : '300',
+          color : "black",
+          backgroundColor : "White",
+          height : "10px"
        },
        '& tbody td' : {
-        fontWeight : '300',
+        fontWeight : '100',
        },
 
        '& tbody tr:hover' : {
-        backgroundColor : '#3f51b5',
+        backgroundColor : 'lightgrey',
         cursor: 'pointer'
+       },
+
+       '& .MuiTableCell-head ' :{
+
+       
+         lineHeight : "12px"
        }
    },
     
@@ -33,7 +39,7 @@ export default function UseTable(records, headCells,lenght,filterfn) {
  
     
     
-    const pages = [10,15,20];
+    const pages = [100,1500,2000, lenght];
     const  [page , setPage] = useState(0);
     const  [rowsPerpage , setrowsPerpagePage] = useState(pages[page]);
     const useClasses = useStyles();
@@ -49,30 +55,37 @@ export default function UseTable(records, headCells,lenght,filterfn) {
     )
       
     const TblHead = props => {
-        const HandleSorting =(id) => {
+        
+        try {
+          const HandleSorting =(id) => {
             console.log(orderBy === id && order === 'asc')
             const isAsc = orderBy === id && order === 'asc';
             setOrder(isAsc ? 'desc' : 'asc') 
             setOrderBy(id)
         }
-      return  <TableHead>
-       <TableRow>
-       {headCells.map ( header => (
-           <TableCell key= {header.id }
-           sortDirection = {orderBy === header.id ? order : false} >
-           {header.disableSorting ? header.label :
-           <TableSortLabel 
-           active = {orderBy ===  header.id}
-           direction = {orderBy ===  header.id ? order : 'asc'}
-           onClick= { () => {HandleSorting(header.id)} }>
-           {header.label}
-           </TableSortLabel>
+          return ( <TableHead>
+            <TableRow>
+            {headCells.map ( header => (
+                <TableCell key= {header.id }
+                sortDirection = {orderBy === header.id ? order : false} >
+                {header.disableSorting ? header.label :
+                <TableSortLabel 
+                active = {orderBy ===  header.id}
+                direction = {orderBy ===  header.id ? order : 'asc'}
+                onClick= { () => {HandleSorting(header.id)} }>
+                {header.label}
+                </TableSortLabel>
+             }
+                
+                </TableCell>
+            )) }
+            </TableRow>
+             </TableHead>
+           )
+        } catch (error) {
+          console.log(error)
         }
-           
-           </TableCell>
-       )) }
-       </TableRow>
-        </TableHead>
+     
        }
             
             const handleChange = (event, newPage) => {

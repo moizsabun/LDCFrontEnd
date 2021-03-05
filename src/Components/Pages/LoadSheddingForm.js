@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { Controls } from '../../Components/Controls/Controls';
 import UseForm, { Form } from "../../Components/UseForm";
-import { Grid } from '@material-ui/core'
+import { Grid ,makeStyles} from '@material-ui/core'
 import { getAllBlocks, getGroups, getCategory } from "../Api/api"
+const useStyles =  makeStyles( theme => ({
+    
+    inputControl : {
+        
+        
+        
+        '& .MuiOutlinedInput-root' : {
+            margin : "0px 5px", 
+        }
+    
+},
 
+    
+
+}))
 
 const initialFValues = {
     LoadSheddingSNO: 0,
@@ -25,6 +39,7 @@ const initialFValues = {
 
 }
 export default function LoadSheddingForm(props) {
+    const classes = useStyles();
     const { update, addOrEdit , recordForEdit } = props;
     const { values, setValues, handleChange } = UseForm(initialFValues);
     const [block, setBlock] = useState()
@@ -263,6 +278,7 @@ export default function LoadSheddingForm(props) {
                                 value={values.block}
                                 onChange={handleChange}
                                 options={block}
+                                className = {classes.inputControl}
                             />
 
                         <Controls.Input
@@ -280,6 +296,7 @@ export default function LoadSheddingForm(props) {
 
                             Inputprops={{ tabIndex: "1" }}
                             disabled
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -293,7 +310,7 @@ export default function LoadSheddingForm(props) {
 
 
                             id="hlFeeders"
-
+                            className = {classes.inputControl}
                             Inputprops={{ tabIndex: "1" }}
                             disabled
                         />
@@ -312,7 +329,7 @@ export default function LoadSheddingForm(props) {
                             id="spell_1_to_and_From"
                             onChange={handleChange}
                             Inputprops={{ tabIndex: "1" }}
-
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -329,7 +346,7 @@ export default function LoadSheddingForm(props) {
                             id="spell_3_to_and_From"
                             onChange={handleChange}
                             Inputprops={{ tabIndex: "1" }}
-
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -341,7 +358,7 @@ export default function LoadSheddingForm(props) {
                             placeholder=""
                             margin="normal"
                             placeholder="SPELL 5 TO AND FROM"
-
+                            className = {classes.inputControl}
                             id="spell_5_to_and_From"
                             onChange={handleChange}
                             Inputprops={{ tabIndex: "1" }}
@@ -357,6 +374,7 @@ export default function LoadSheddingForm(props) {
                             value={values.group}
                             onChange={handleChange}
                             options={group}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -373,6 +391,7 @@ export default function LoadSheddingForm(props) {
 
                             Inputprops={{ tabIndex: "2" }}
                             disabled
+                            className = {classes.inputControl}
                         /> <Controls.Input
                             variant="outlined"
                             value={values.vhlFeeders}
@@ -388,6 +407,7 @@ export default function LoadSheddingForm(props) {
 
                             Inputprops={{ tabIndex: "2" }}
                             disabled
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -403,6 +423,7 @@ export default function LoadSheddingForm(props) {
                             id="spell_2_to_and_From"
                             onChange={handleChange}
                             Inputprops={{ tabIndex: "1" }}
+                            className = {classes.inputControl}
 
                         />
                         <Controls.Input
@@ -419,7 +440,7 @@ export default function LoadSheddingForm(props) {
                             id="spell_4_to_and_From"
                             onChange={handleChange}
                             Inputprops={{ tabIndex: "1" }}
-
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -435,9 +456,18 @@ export default function LoadSheddingForm(props) {
                             id="spell_6_to_and_From"
                             onChange={handleChange}
                             Inputprops={{ tabIndex: "1" }}
-
+                            className = {classes.inputControl}
                         />
-                        <div>
+
+
+
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            
+<Grid container justify="flex-end" spacing={1}>
+<hr></hr>                        <div>
                             <Controls.Button
 
                                 type="submit"
@@ -466,9 +496,7 @@ export default function LoadSheddingForm(props) {
 
 </Controls.Button>
                         </div>
-                    </Grid>
-                </Grid>
-            </Grid>
+                        </Grid>
         </Form>
     )
 }

@@ -1,8 +1,24 @@
 import React, { useEffect } from 'react'
 import { Controls } from '../../Components/Controls/Controls';
 import UseForm, { Form } from "../../Components/UseForm";
-import { Grid } from '@material-ui/core'
+import { Grid, makeStyles } from '@material-ui/core'
 
+
+const useStyles =  makeStyles( theme => ({
+    
+    inputControl : {
+        
+        
+        
+        '& .MuiOutlinedInput-root' : {
+            margin : "0px 5px", 
+        }
+    
+},
+
+    
+
+}))
 const initialFValues = {
     MasterDataSNO : 0,
     ISLAND: "",
@@ -41,7 +57,9 @@ export default function MasterDataForm(props) {
         addOrEdit(values);
 
     }
+    const classes = useStyles();
     return (
+     
         <Form onSubmit= {handleSubmit}>
 
             <Grid>
@@ -63,6 +81,7 @@ export default function MasterDataForm(props) {
                             id="ISLAND"
                             onChange={handleChange}
                             inputprops={{ tabIndex: "1" }}
+                            className = {classes.inputControl}
                         />
 
 
@@ -80,6 +99,7 @@ export default function MasterDataForm(props) {
                             id="GridBlock"
                             onChange={handleChange}
                             inputprops={{ tabIndex: "3" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -95,6 +115,7 @@ export default function MasterDataForm(props) {
                             inputprops={{ tabIndex: "5" }}
 
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -107,6 +128,7 @@ export default function MasterDataForm(props) {
                             margin="normal"
                             required   
                             inputprops={{ tabIndex: "7" }}
+                            className = {classes.inputControl}
 
 
                             onChange={handleChange}
@@ -125,6 +147,7 @@ export default function MasterDataForm(props) {
                             inputprops={{ tabIndex: "9" }}
 
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -139,6 +162,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "11" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -154,6 +178,7 @@ export default function MasterDataForm(props) {
 
                             inputprops={{ tabIndex: "13" }}
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -167,6 +192,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "15" }}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -180,6 +206,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "17" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -194,6 +221,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "19" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -208,6 +236,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "21" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -222,6 +251,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "23" }}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -235,6 +265,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "25" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -249,6 +280,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "27" }}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -262,10 +294,11 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "29" }}
+                            className = {classes.inputControl}
                         />
 
                     </Grid>
-
+                
                     <Grid item xs={6} >
                         <Controls.Input
                             variant="outlined"
@@ -280,6 +313,7 @@ export default function MasterDataForm(props) {
                             inputprops={{ tabIndex: "2" }}
 
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -292,6 +326,7 @@ export default function MasterDataForm(props) {
                             margin="normal"
                             required  
                             inputprops={{ tabIndex: "4" }}
+                            className = {classes.inputControl}
 
 
                             onChange={handleChange}
@@ -309,6 +344,7 @@ export default function MasterDataForm(props) {
 
                             inputprops={{ tabIndex: "6" }}
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -323,6 +359,7 @@ export default function MasterDataForm(props) {
                             inputprops={{ tabIndex: "8" }}
 
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
 
 
@@ -339,6 +376,7 @@ export default function MasterDataForm(props) {
                             inputprops={{ tabIndex: "10" }}
 
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -354,6 +392,7 @@ export default function MasterDataForm(props) {
                             inputprops={{ tabIndex: "12" }}
 
                             onChange={handleChange}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -367,6 +406,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "14" }}
+                            className = {classes.inputControl}
                         />
                         <Controls.Input
                             variant="outlined"
@@ -380,6 +420,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "16" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -394,6 +435,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "18" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -408,6 +450,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "20" }}
+                            className = {classes.inputControl}
                         />
 
 
@@ -423,6 +466,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "22" }}
+                            className = {classes.inputControl}
                         />
 
                         <Controls.Input
@@ -437,6 +481,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "24" }}
+                            className = {classes.inputControl}
                         />
 
 
@@ -452,6 +497,7 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "26" }}
+                            className = {classes.inputControl}
                         />
 
 
@@ -467,8 +513,19 @@ export default function MasterDataForm(props) {
                             required
                             onChange={handleChange}
                             inputprops={{ tabIndex: "28" }}
+                            className = {classes.inputControl}
                         />
-                        <hr></hr>
+                        
+                    </Grid>
+
+                  
+                </Grid>
+            </Grid>
+            
+
+
+<Grid container justify="flex-end" spacing={1}>
+<hr></hr>
                         <div>
                             <Controls.Button
 
@@ -498,9 +555,7 @@ export default function MasterDataForm(props) {
 
             </Controls.Button>
                         </div>
-                    </Grid>
-                </Grid>
-            </Grid>
+</Grid>
         </Form>
     )
 }

@@ -104,6 +104,7 @@ export default function Masterdata() {
     const [isUpdated ,setUpdated] = useState("")
     const [recordForEdit ,setRecordForEdit] = useState(null)
     const [getfile, setFile] = useState();
+    const [isFileExsist, setisFileExsist] = useState(false);
     const  [notify,setNotify] =  useState({isOpen:false, message: '', type : ''});
     const [ConfirmDialog, setConfirmDialog] =  useState({title:'', subtitle : '' ,isOpen : false})
     useEffect(() => {
@@ -163,6 +164,7 @@ export default function Masterdata() {
         }
         };
         reader.readAsBinaryString(f);
+        setisFileExsist(false);
       }
     
      
@@ -175,7 +177,7 @@ export default function Masterdata() {
      // this.setState({ file });
      setFile(file);
       console.log(getfile);
-    
+      setisFileExsist(true);
     }
     
     console.log("Called this Method")
@@ -251,8 +253,16 @@ export default function Masterdata() {
                     return masterdataRecords
                 }
                 else{
-                  
+                  try {
                     return masterdataRecords.filter(x => x.switch_Type.includes(e.target.value) )
+                  } catch (error) {
+                    console.log(error);
+                      return (
+<h1> Error</h1>
+                      );
+                      
+                  }
+                   
                 }
             }
 
@@ -282,7 +292,7 @@ export default function Masterdata() {
     return (
 
         <>
-        <div>
+        {/* <div>
       
         <input
               type="file"
@@ -298,17 +308,20 @@ export default function Masterdata() {
             >
               Read File
             </button>
-        </div>
+        </div> */}
         <Paper className = {classes.pageContenet}>
         <Form style={{display: "flex" ,  flexDirection: "row" }}>
         <Form.File 
           id="upload1"
           style= {{width:"200px", marginBottom: "10px" ,}}
+          onChange={filePathset}
         />
             <BtButton  variant="secondary" size="sm" style={{borderRadius: "10" , marginBottom: "10px" 
-        ,  height: "40px" , marginLeft: "50px"}}>Upload Ffile</BtButton>
+        ,  height: "40px" , marginLeft: "50px"}}  onClick={() => {
+            readFile();
+          }} disabled = {isFileExsist === false}>Upload File</BtButton>
      
-       
+
       
        
       </Form>

@@ -1,13 +1,12 @@
 import React , {useState,useEffect}from 'react'
 import LoadSheddingDataForm from './LoadSheddingForm'
-import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import { Paper ,makeStyles, TableBody,TableRow, TableCell, Toolbar, InputAdornment} from '@material-ui/core';
 import UseTable from "../UseTable";
 import { Controls } from "../Controls/Controls";
 import { Height, Search } from '@material-ui/icons';
 import AddIcon from "@material-ui/icons/Add";
 import Popup from "../Popup";
-import { Snackbar  } from '@material-ui/core';
+import { Snackbar , Grid } from '@material-ui/core';
 import {InsertLSData,GetLoadSheddings, setExpiry,updateLSData} from "../Api/api"
 import CloseIcon from '@material-ui/icons/Close'
 import EditOutlined from '@material-ui/icons/EditOutlined'
@@ -40,8 +39,8 @@ addNewbtn : {
    } ,
 
    Fdiv:{
-    paddingTop: '130px',
-    paddingLeft: '140px'
+    // paddingTop: '130px',
+    // paddingLeft: '140px'
    }
 }))
 
@@ -241,7 +240,9 @@ export default function Loadshedding() {
         onClick = { () => {setOpenPopup(true) ;setRecordForEdit(null) } }
         >Add ShutdownPlan
         </Controls.Button>
-<div className={classes.Fdiv}>
+        </Toolbar>
+<Grid container justify="flex-end">
+  
 <Form onSubmit={handleSubmit}>
 <Controls.DatePicker
         name="expiryDate"
@@ -259,9 +260,11 @@ export default function Loadshedding() {
         >Set Plan Expiry
         </Controls.Button>
         </Form>
-</div>
+
+
+</Grid>
        
-        </Toolbar>
+       
            <TblContainer>
            
             <TblHead></TblHead>
