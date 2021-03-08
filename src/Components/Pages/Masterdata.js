@@ -1,4 +1,3 @@
-
 import React , {useState,useEffect}from 'react'
 import MasterDataForm from './MasterDataForm'
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
@@ -82,20 +81,10 @@ const headCells = [
     {id : 'dataAddedDateTime', label : 'Data Added DateTime' },
     {id : 'actions', label : 'Actions' , disableSorting : true}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ]
+
+const  ExcelHeadings= ["ISLAND","GridBlock","TRAFO","Feeder_ID","Switch_Number","Switch_Name","Switch_Type","FEEDER_TYPE","Group","Category","Switch_ Make ","Region","Cable_Status ","UFR_SW","Stage_A","Stage_B","S1","S2","S3","S4","S5","S6","S7","S8","S9","S10","S11","CAP_OK_MVAR","CAP_MVAR"]
+
 export default function Masterdata() {
    
     const [getMasterData, setMasterData] = useState([]);
@@ -139,28 +128,50 @@ export default function Masterdata() {
           /* Convert array of arrays */
           //const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
           /* Update state */
-          const data = XLSX.utils.sheet_to_json(ws, {
-            raw: true
+          let dataHeader = XLSX.utils.sheet_to_json(ws, {
+            header: 1
+            //raw: true
+        });
+        const data = XLSX.utils.sheet_to_json(ws, {
+            //raw: true
         });
         console.log(data);
-    
+
         console.log(JSON.stringify(data));
         //  console.log("Data>>>" + data);// shows that excel data is read
-          //console.log(convertToJson(data)); // shows data in json format
-         
+        //console.log(convertToJson(data)); // shows data in json format
+        console.log(dataHeader)
+        dataHeader = JSON.stringify(dataHeader[0])
+        console.log(dataHeader)
+        console.log(JSON.stringify(ExcelHeadings))
+       if(dataHeader == JSON.stringify(ExcelHeadings))
+       {
+            console.log(true);
+            console.log("Sending Data to API");
+
+
+           //  await AddMasterData(data);
+            console.log("Data Uplaoded");
+            if (isUpdated === "yes") {
+                setUpdated("yes!")
+            }
+            else {
+                setUpdated("yes")
+            }
+
         
-          
-          console.log("Sending Data to API");
            
-          
-          await AddMasterData(data);
-          console.log("Data Uplaoded");
-          if(isUpdated === "yes")
-        {
-            setUpdated("yes!")
         }
-        else{
-            setUpdated("yes")
+        else
+        {
+            console.log("false");
+            setNotify({
+                isOpen: true,
+                message: "File type not matched.. Please upload coorect file",
+                type: "warning"
+            })
+            
+
         }
         };
         reader.readAsBinaryString(f);

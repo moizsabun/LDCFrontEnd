@@ -6,13 +6,18 @@ const useStyles =  makeStyles( theme => ({
   
     Table : {
        marginTop : theme.spacing(3),
-       
-         
+        
+    
+       "& .MuiTableCell-root": {
+        borderLeft: "1px solid rgba(224, 224, 224, 1)"
+      },
        '& thead th' : {
         fontWeight : '300',
           color : "black",
           backgroundColor : "White",
-          height : "10px"
+          height : "10px",
+          whiteSpace: "nowrap"
+
        },
        '& tbody td' : {
         fontWeight : '100',
@@ -26,7 +31,7 @@ const useStyles =  makeStyles( theme => ({
        '& .MuiTableCell-head ' :{
 
        
-         lineHeight : "12px"
+         lineHeight : "10px"
        }
    },
     
