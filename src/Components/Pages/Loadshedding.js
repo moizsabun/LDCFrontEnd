@@ -12,6 +12,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import EditOutlined from '@material-ui/icons/EditOutlined'
 import UseForm, { Form } from "../../Components/UseForm";
 import Footer from './Footer';
+import Notifications from "../Controls/Notifications";
 const useStyles = makeStyles(theme => ({
     pageContenet: {
 
@@ -59,8 +60,8 @@ const headCells = [
     { id: 'spell_6_to_and_From', label: 'SPELL 6 TO AND FROM' },
     { id: 'planExpiry', label: 'EXPIRY' },
     { id: 'dataAddedDateTime', label: 'dataAddedDateTime' },
-    { id: 'dataAddedBy', label: 'dataAddedBy' }
-
+    { id: 'dataAddedBy', label: 'dataAddedBy' },
+    { id: 'actions', label: 'Actions' }
 ]
 
 const initialFValues = {
@@ -73,16 +74,22 @@ export default function Loadshedding() {
     const [openPopup, setOpenPopup] = useState(false);
     const [isUpdated, setUpdated] = useState("")
     const [recordForEdit, setRecordForEdit] = useState(null)
-
+    const [loading, setLoading] = useState(false);
+    const [notify, setNotify] = useState({
+        isOpen: false,
+        message: "",
+        type: "",
+      });
     useEffect(() => {
         console.log(isUpdated)
         const fetchAPI = async () => {
             try {
-
+                setLoading(true);
                 setLSData(await GetLoadSheddings());
-
+                setLoading(false);
             } catch (error) {
-                console.log(`Error ${error}`)
+                setLoading(false);
+                console.log("Error  " + {error})
             }
 
         }
@@ -109,13 +116,16 @@ export default function Loadshedding() {
     const handleSubmit = e => {
 
         e.preventDefault();
+   
         console.log(values);
 
         addExpiry(values);
+       
     }
 
 
     const addExpiry = async (values) => {
+        setLoading(true);
         let getData = await setExpiry(values.expiryDate);
         console.log(getData)
         if (isUpdated === "yes") {
@@ -124,9 +134,16 @@ export default function Loadshedding() {
         else {
             setUpdated("yes")
         }
+        setLoading(false);
+        setNotify({
+            isOpen: true,
+            message: "Record Saved Successfull",
+            type: "success",
+          });
     }
     const addOredit = async (values, resetForm) => {
         console.log(values.MasterDataSNO)
+        setLoading(true);
         if (values.LoadSheddingSNO === 0) {
             await InsertLSData(values);
 
@@ -147,7 +164,7 @@ export default function Loadshedding() {
 
 
         setOpenPopup(false);
-
+        setLoading(false);
     }
 
 
@@ -195,7 +212,7 @@ export default function Loadshedding() {
         return (
             <>
                 <Paper className={classes.pageContenet}>
-
+                <Controls.LoadingControl open={loading}></Controls.LoadingControl>
                     <Toolbar>
                         <Controls.Input
                             className={classes.inputControl}
@@ -308,7 +325,7 @@ export default function Loadshedding() {
                     title="Shutdown Form">
                     <LoadSheddingDataForm update={"yes"} addOrEdit={addOredit} recordForEdit={recordForEdit}></LoadSheddingDataForm>
                 </Popup>
-
+                <Notifications notify={notify} setNotify={setNotify}></Notifications>
             </>
         )
 

@@ -58,6 +58,7 @@ const headCells = [
 ]
 export default function LoadSheddingArchive() {
     const [getLSData, setLSData] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [filterfn, setFilter] = useState({ fn: masterdataRecords => { return masterdataRecords } });
     const [state, setState] = useState({
         vertical: 'bottom',
@@ -77,11 +78,13 @@ export default function LoadSheddingArchive() {
 
         const fetchAPI = async () => {
             try {
-
+                setLoading(true);
                 setLSData(await getAllLSDataArchive());
                 console.log(getLSData)
+                setLoading(false);
             } catch (error) {
-                console.log(`Error ${error}`)
+                console.log("Error "+ {error});
+                setLoading(false);
             }
 
         }
@@ -125,7 +128,7 @@ export default function LoadSheddingArchive() {
   
            
             </Toolbar>
-
+            <Controls.LoadingControl open={loading}></Controls.LoadingControl>
                 <TblContainer>
                     <TblHead></TblHead>
                     <TableBody>

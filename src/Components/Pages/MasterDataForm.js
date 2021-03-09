@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Controls } from '../../Components/Controls/Controls';
 import UseForm, { Form } from "../../Components/UseForm";
 import { Grid, makeStyles } from '@material-ui/core'
@@ -40,6 +40,7 @@ const initialFValues = {
 export default function MasterDataForm(props) {
     const {addOrEdit , recordForEdit} =props;
     const { values, setValues,handleChange } = UseForm(initialFValues);
+    const  [loading, setLoading] = useState(false)
     useEffect ( ()=> {
 
         if(recordForEdit != null) {
@@ -52,9 +53,11 @@ export default function MasterDataForm(props) {
 
     const handleSubmit = e => {
        
+        setLoading(true);
         e.preventDefault();
         console.log(values);
         addOrEdit(values);
+        setLoading(false);
 
     }
     const classes = useStyles();
@@ -64,6 +67,7 @@ export default function MasterDataForm(props) {
 
             <Grid>
                 <Grid container>
+                <Controls.LoadingControl open={loading}></Controls.LoadingControl>
                     <Grid item xs={6} >
 
 
@@ -534,7 +538,7 @@ export default function MasterDataForm(props) {
                                 variant="contained"
                                 color="primary"
                                 // className={classes.submit}
-                                disabled={false}
+                                disabled={loading}
                                 inputprops={{ tabIndex: "30" }}
                             >
                                 Submit

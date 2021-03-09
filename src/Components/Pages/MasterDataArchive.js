@@ -73,6 +73,7 @@ const headCells = [
 
     export default function MasterDataArchive() {
         const [getMasterData, setMasterData] = useState([]);
+        const [loading, setLoading] = useState(false);
         const [filterfn, setFilter] = useState( {fn : masterdataRecords => {return masterdataRecords}});
         const [state, setState] = useState({
             vertical : 'bottom',
@@ -92,11 +93,13 @@ const headCells = [
           
             const fetchAPI = async () => {
                 try {
-                   
+                    setLoading(true);
               setMasterData(await getAllMasterDataArchive());
-             console.log(`masterData ${getMasterData}`)
+             console.log("masterData  [" +{getMasterData} + "]");
+             setLoading(false);
                 } catch (error) {
-                    console.log(`Error ${error}`)
+                    console.log("Error "+ {error});
+                        setLoading(false);
                 }
                
             }
@@ -144,6 +147,7 @@ const headCells = [
         </Toolbar>
        
             <TblContainer>
+            <Controls.LoadingControl open={loading}></Controls.LoadingControl>
             <TblHead></TblHead>
                 <TableBody>
                 {

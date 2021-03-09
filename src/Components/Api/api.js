@@ -1,7 +1,7 @@
 import Authheader from "../../services/auth-header";
 
 
-const url = "http://localhost:52293/api";
+const url = "http://ncm-dev:8000/api";
 
 export const VerfiyLogin = async (getusername, getpassword) => {
 

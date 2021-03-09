@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
  let isAuth = useContext(isAuthContext);
   const [state, setState] = useState({
-    isLoading : 'no',
+    isLoading : false,
     vertical : 'bottom',
     horizontal: 'center',
     isOpen : false,
@@ -60,13 +60,13 @@ export default function Login() {
     try {
       console.log("in Try Block"); 
       //setLoading('loading');
-      setState ({ isLoading:'loading'});
+      setState ({ isLoading:true});
     
       let isSucess = await    VerfiyLogin(username, password);
       
       console.log("Executed this line")
       //setLoading('');
-      setState ({isLoading:'no'});
+      setState ({isLoading:false});
       if(isSucess)
       {
         isAuth[1](true)
@@ -87,7 +87,7 @@ export default function Login() {
     catch (error) {
      // setOpen(true);
       //setLoading();
-      setState ({...state, isLoading:'no', isOpen:true});
+      setState ({...state, isLoading:false, isOpen:true});
       console.log("Error Occured");
       console.log(error);
       isAuth[1](false)
@@ -153,7 +153,7 @@ if(isAuth[0])
                 variant="outlined"
                   
                   name="username"
-                  label="Uer Name"
+                  label="User Name"
                   type="text"
                   size = "large"
                   placeholder = "Enter User Name Here"
@@ -186,11 +186,13 @@ if(isAuth[0])
                   variant="contained"
                   color="primary"
                  // className={classes.submit}
-                  disabled={state.isLoading === 'loading'}
+                  disabled={state.isLoading}
                 >
-                  {state.isLoading === 'loading' ? 'Please wait' : 'SIGN IN'}
+             SIGN IN
   
                 </Controls.Button>
+
+              <Controls.LoadingControl open={state.isLoading}></Controls.LoadingControl>
                <Snackbar open={state.isOpen} autoHideDuration={2500} onClose={handleClose} message="Error Occured, Please Contact Administrator" >
                  
                 </Snackbar>
