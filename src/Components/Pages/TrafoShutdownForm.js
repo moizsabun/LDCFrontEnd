@@ -1,15 +1,33 @@
 import React, { useEffect } from 'react'
 import { Controls } from '../../Components/Controls/Controls';
 import UseForm, { Form } from "../../Components/UseForm";
-import { Grid } from '@material-ui/core'
+import { Grid , makeStyles} from '@material-ui/core'
 
+const useStyles = makeStyles((theme) => ({
+    inputControl: {
+      "& .MuiOutlinedInput-root": {
+        margin: "0px 5px",
+      },
+      
+    },
 
+    selectControl : {
+        '& ..MuiOutlinedInput-root': {
+            root :
+            {
+                margin: "0px 5px",
+            }
+           
+          }, 
+    }
+  }));
+  
 const initialFValues = {
   TrafoShutdownSNO: 0,
   grid : "",
   trafo: "",
   time : "",
-  date : "",
+  date : new Date(),
   feederAffected : false,
   reason : "",
   rating : "",
@@ -17,6 +35,7 @@ const initialFValues = {
   gsm : "",
 }
 export default function TrafoShutdownForm(props) {
+    const classes = useStyles();
     const {addOrEdit , recordForEdit} =props;
     const { values, setValues,handleChange } = UseForm(initialFValues);
     useEffect ( ()=> {
@@ -49,11 +68,13 @@ export default function TrafoShutdownForm(props) {
                             label="Select Grid"
                             value={values.grid}
                             onChange={handleChange}
-                           
+                            className={classes.selectControl}
+                            
                         />
 
 
                         <Controls.Input
+                             className={classes.inputControl}
                             variant="outlined"
                             value={values.time}
                             name="time"
@@ -74,9 +95,11 @@ export default function TrafoShutdownForm(props) {
                         label="Feeder Affected"
                         value={values.feederAffected}
                         onChange={handleChange}
+                        className={classes.inputControl}
                        
                     />
                     <Controls.Input
+                         className={classes.inputControl}
                         variant="outlined"
                         value={values.rating}
                         name="rating"
@@ -90,6 +113,7 @@ export default function TrafoShutdownForm(props) {
                         id="rating"
                         onChange={handleChange}
                         inputprops={{ tabIndex: "3" }}
+                        
                     />
 
                     </Grid>
@@ -101,13 +125,13 @@ export default function TrafoShutdownForm(props) {
                     label="Select Trafo"
                     value={values.trafo}
                     onChange={handleChange}
-                    
+                    className={classes.selectControl}
                 />
                 <Controls.DatePicker
                 name="Date"
                 label = "Enter Shutdown Date"
                 value= {values.date}
-           
+                className={classes.inputControl}
                onChange= {handleChange}
                 >
              
@@ -123,7 +147,7 @@ export default function TrafoShutdownForm(props) {
                             placeholder="Enter Reason"
                             margin="normal"
                             required
-
+                            className={classes.inputControl}
                             inputprops={{ tabIndex: "6" }}
                             onChange={handleChange}
                         />
@@ -132,13 +156,13 @@ export default function TrafoShutdownForm(props) {
                         label="Select Load"
                         value={values.load}
                         onChange={handleChange}
-                        
+                        className={classes.inputControl}
                     /> <Controls.Select
                     name="gsm"
                     label="Select GSM"
                     value={values.gsm}
                     onChange={handleChange}
-                    
+                    className={classes.inputControl}
                 />
                         <hr></hr>
                         <div>

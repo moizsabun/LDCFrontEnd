@@ -5,7 +5,7 @@ import {BrowserRouter as Router,Switch,Route  } from "react-router-dom";
 import Masterdata from "./Components/Pages/Masterdata";
 import history from "./history";
 import Login from './Components/login';
-import Logout from './Components/Logout';
+
 import isAuthContext from "./Components/AppContext"
 import Loadshedding from './Components/Pages/Loadshedding';
 import MasterDataArchive  from "./Components/Pages/MasterDataArchive";
@@ -42,6 +42,7 @@ export default function Home(   ) {
         <Route path="/Pages/MasterDataArchive" component={MasterDataArchive} />
         <Route path="/Pages/LoadSheddingArchive" component={LoadSheddingArchive} />
         <Route path="/Pages/TrafoShutdown" component={TrafoShutdown} />
+        
         <Route path="/" component={Login} />
     
        

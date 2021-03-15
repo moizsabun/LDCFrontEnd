@@ -245,7 +245,7 @@ export default function Loadshedding() {
                         <Controls.Button
                             variant="outlined" startIcon={<AddIcon></AddIcon>} className={classes.addNewbtn}
                             onClick={() => { setOpenPopup(true); setRecordForEdit(null) }}
-                        >Add ShutdownPlan
+                        >Add LoasShedding
         </Controls.Button>
                     </Toolbar>
                     <Grid container justify="flex-end">

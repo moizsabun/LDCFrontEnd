@@ -6,7 +6,7 @@ export default function Select(props) {
     const [data , setData] = useState();
     console.log(options)
     useEffect( ()=> {
-        if(options != undefined || options != null || options != "")
+        if(options !== undefined || options !== null || options !== "")
         {
             setData(options)
         }

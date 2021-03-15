@@ -67,7 +67,7 @@ export default function MasterDataForm(props) {
 
             <Grid>
                 <Grid container>
-                <Controls.LoadingControl open={loading}></Controls.LoadingControl>
+                
                     <Grid item xs={6} >
 
 

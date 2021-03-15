@@ -6,8 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from '../../Home';
+
 import isAuthContext from  "../AppContext"
 
 const useStyles = makeStyles((theme) => ({

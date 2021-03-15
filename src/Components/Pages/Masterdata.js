@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import MasterDataForm from "./MasterDataForm";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
   Paper,
   makeStyles,
@@ -145,6 +147,9 @@ export default function Masterdata() {
       try {
         setLoading(true);
         setMasterData(await getAllMasterData());
+        AOS.init({
+            duration : 2000
+          })
         console.log(`masterData ${getMasterData}`);
         setLoading(false);
       } catch (error) {
@@ -347,7 +352,9 @@ export default function Masterdata() {
               Read File
             </button>
         </div> */}
+      
         <Paper className={classes.pageContenet}>
+        <Controls.LoadingControl open={loading}></Controls.LoadingControl>
           <Form style={{ display: "flex", flexDirection: "row" }}>
             <Form.File
               id="upload1"
@@ -411,7 +418,7 @@ export default function Masterdata() {
             </Controls.Button>
            
           </Toolbar>
-          <Controls.LoadingControl open={loading}></Controls.LoadingControl>
+          <div data-aos="fade-down" data-aos-easing="linear">
           <TblContainer>
             <TblHead></TblHead>
             <TableBody>
@@ -484,18 +491,27 @@ export default function Masterdata() {
             </TableBody>
           </TblContainer>
           <TblPagination></TblPagination>
+          </div>
         </Paper>
+    
         <Footer></Footer>
+        
         <Popup
           openPopup={openPopup}
           setopenPopup={setOpenPopup}
           title="Master Data Form"
         >
+            <Controls.LoadingControl open={loading}></Controls.LoadingControl>
+            <div data-aos="zoom-in-up">
           <MasterDataForm
             addOrEdit={addOredit}
             recordForEdit={recordForEdit}
           ></MasterDataForm>
+          
+          </div>
+          
         </Popup>
+    
         <Notifications notify={notify} setNotify={setNotify}></Notifications>
         <ConfirmDialogue
           ConfirmDialog={ConfirmDialog}

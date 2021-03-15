@@ -74,7 +74,7 @@ export const InsertMasterData =async(masterdata) => {
     console.log(Authheader().token);
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+    //let token =localStorage.getItem("Token"); 
     console.log(masterdata);
    const data = { "userid" : 1 , "masterdata" : [masterdata]};
   console.log(
@@ -103,7 +103,7 @@ export const updateMasterData =async(masterdata) => {
     console.log(Authheader().token);
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+    //let token =localStorage.getItem("Token"); 
     console.log(masterdata);
    const data = { "userid" : 1 ,"MasterDataSNO" : masterdata.MasterDataSNO ,"masterdata" : [masterdata]};
   console.log(
@@ -131,7 +131,7 @@ export const getAllMasterData =async() => {
     console.log(Authheader().token);
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+   // let token =localStorage.getItem("Token"); 
     
   
 
@@ -159,7 +159,7 @@ export const getAllMasterDataArchive =async() => {
     console.log(Authheader().token);
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+    //let token =localStorage.getItem("Token"); 
     
   
 
@@ -188,7 +188,7 @@ export const getAllLSData =async() => {
 
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+  //  let token =localStorage.getItem("Token"); 
     
   
 
@@ -216,7 +216,7 @@ export const getAllBlocks =async() => {
 
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+    //let token =localStorage.getItem("Token"); 
     
   
 
@@ -244,7 +244,7 @@ export const getGroups =async(block) => {
 
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+   // let token =localStorage.getItem("Token"); 
     
   
 console.log (`Block ${block}`)
@@ -277,7 +277,7 @@ export const getCategory =async(block,getGroup) => {
 
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+ //   let token =localStorage.getItem("Token"); 
     
   
 console.log (`Block ${block} Group ${getGroup}`)
@@ -310,7 +310,7 @@ export const InsertLSData =async(masterdata) => {
     console.log(Authheader().token);
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+ //   let token =localStorage.getItem("Token"); 
     console.log(masterdata);
    const data = { "userid" : 1 , "ls" : masterdata};
   console.log(
@@ -337,7 +337,7 @@ export const updateLSData =async(lsdata) => {
     console.log("Getting Token")
   
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+  //  let token =localStorage.getItem("Token"); 
     console.log(lsdata);
    const data = { "userid" : 1 , "ls" : lsdata};
   console.log(
@@ -363,7 +363,7 @@ export const updateLSData =async(lsdata) => {
 export const GetLoadSheddings =async() => {
     
   
-    let token =localStorage.getItem("Token"); 
+   // let token =localStorage.getItem("Token"); 
     
  
 
@@ -389,7 +389,7 @@ export const GetLoadSheddings =async() => {
 export const setExpiry =async(expiry) => {
     
   
-    let token =localStorage.getItem("Token"); 
+   // let token =localStorage.getItem("Token"); 
     
     const data = { "userid" : 1 , "dateTime" : expiry};
 console.log(JSON.stringify (data))
@@ -416,7 +416,7 @@ export const getAllLSDataArchive =async() => {
     console.log(Authheader().token);
     console.log("Getting Token from Local Storage");
     console.log(localStorage.getItem("Token"));
-    let token =localStorage.getItem("Token"); 
+    //let token =localStorage.getItem("Token"); 
     
   
 

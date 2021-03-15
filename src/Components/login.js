@@ -16,6 +16,7 @@ import { Controls } from "../Components/Controls/Controls";
 import isAuthContext from "../Components/AppContext"
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './Pages/Footer';
+import TrafoShutdown from './Pages/TrafoShutdown';
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -121,6 +122,7 @@ if(isAuth[0])
     <Route component={Home} exact path="/Pages/LoadShedding"></Route>
      <Route component={Home} exact path="/Pages/MasterDataArchive"></Route>
   <Route component={Home} exact path="/Pages/LoadSheddingArchive"></Route> 
+  <Route path="/Pages/TrafoShutdown" component={TrafoShutdown} />
     </Router>
 
     
@@ -155,7 +157,7 @@ if(isAuth[0])
                   name="username"
                   label="User Name"
                   type="text"
-                  size = "large"
+                  size = "small"
                   placeholder = "Enter User Name Here"
                   margin="normal"
                   required

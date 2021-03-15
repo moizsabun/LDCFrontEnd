@@ -1,5 +1,5 @@
 import React , {useContext}from 'react'
-import {  Nav,Navbar,NavDropdown,Form , Button} from 'react-bootstrap';
+import {  Nav,Navbar,NavDropdown} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
 import {Button as MuiButton} from '@material-ui/core';
 import { Link } from "react-router-dom";
@@ -34,6 +34,12 @@ export default function Header() {
             <NavDropdown.Item>Load Shedding Archive</NavDropdown.Item>
             </LinkContainer>
             </NavDropdown>
+
+           
+            <LinkContainer to="/Pages/TrafoShutdown">
+            <Nav.Link>Traffo Shutdown</Nav.Link>
+            </LinkContainer>
+
           </Nav>
           <Nav className="justify-content-end">
           <Nav.Item>
