@@ -298,7 +298,7 @@ export default function Masterdata() {
         } else {
           try {
             return masterdataRecords.filter((x) =>
-              x.switch_Type.includes(e.target.value)
+              x.FeederID.includes(e.target.value)
             );
           } catch (error) {
             console.log(error);
