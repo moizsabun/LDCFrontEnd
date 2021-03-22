@@ -10,7 +10,7 @@ export const VerfiyLogin = async (getusername, getpassword) => {
     console.log(`password ${getpassword}`);
 
     let getToken = await fetch(`${url}/Login/authenticate`, {
-        method: "POST",
+        method: "POST",  
         body: JSON.stringify({
             username: getusername,
             password: getpassword,
